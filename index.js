@@ -2,6 +2,8 @@ const express = require('express');
 const routes = require('./routes/routes');
 const cronJob = require('./cron/job');
 const customerController = require('./controllers/customerController');
+const dataController = require('./controllers/dataController');
+
 
 const app = express();
 const port = 3000;
@@ -16,5 +18,6 @@ app.listen(port, () => {
 cronJob; // cron u başlatmak
 
 (async () => {
+    await dataController.fetchAndStoreData();
     await customerController.updateCustomerData();
 })();
