@@ -13,7 +13,7 @@ app.listen(port, () => {
   console.log(`Sunucu http://localhost:${port} adresinde çalışıyor.`);
 });
 
-cronJob; // Cron job'ı başlatmak için
+cronJob; // cron u başlatmak
 
 (async () => {
     await customerController.updateCustomerData();

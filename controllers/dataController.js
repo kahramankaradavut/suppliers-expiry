@@ -1,25 +1,25 @@
 const pool = require('../config/db');
 const apiService = require('../services/apiService');
 
-// Tarih formatını YYYY-MM-DD formatına dönüştürmek için bir fonksiyon
+// Tarihi YYYY-MM-DD formatına dönüştürmek
 function convertDateFormat(dateString) {
   const [day, month, year] = dateString.split('.');
   return `${year}-${month}-${day}`;
 }
 
-// Vade gününü hesaplamak için bir fonksiyon
+// Vade gününü hesaplama
 function calculateDaysDue(dueDate) {
-  const convertedDueDate = convertDateFormat(dueDate); // Tarih formatını dönüştür
-  const currentDate = new Date(); // Bugünün tarihini alıyoruz
-  const due = new Date(convertedDueDate); // Vade tarihini Date nesnesine çeviriyoruz
+  const convertedDueDate = convertDateFormat(dueDate); 
+  const currentDate = new Date(); // Bugünün tarihini
+  const due = new Date(convertedDueDate);
 
-  if (isNaN(due.getTime())) { // Eğer vade tarihi geçersizse
+  if (isNaN(due.getTime())) { 
     console.error(`Geçersiz vade tarihi: ${dueDate}`);
     return null;
   }
 
-  const diffTime = due - currentDate; // Vade tarihi ile bugünün tarihi arasındaki farkı hesaplıyoruz
-  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); // Farkı gün cinsinden hesaplıyoruz
+  const diffTime = due - currentDate; // Tarihler arası fark
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); // Farkı gün'e çevirme (milisaniye)
   return diffDays;
 }
 
@@ -32,9 +32,9 @@ async function fetchAndStoreData() {
 
     // Yeni verileri ekleme
     for (let record of data) {
-      const daysDue = calculateDaysDue(record['VADE TARİHİ']); // Vade gününü hesapla
+      const daysDue = calculateDaysDue(record['VADE TARİHİ']);
 
-      if (daysDue !== null) { // Eğer geçerli bir gün sayısıysa, veritabanına ekle
+      if (daysDue !== null) {
         await pool.query(
           `INSERT INTO invoices (
             invoice_date, due_date, invoice_type, document_no, invoice_no, customer_name,
@@ -51,7 +51,7 @@ async function fetchAndStoreData() {
             record['FATURA TOPLAMI'], 
             record['ÖDENEN TOPLAM'], 
             record['AÇIK FATURA TOPLAMI'], 
-            daysDue // Hesaplanan days_due değeri
+            daysDue
           ]
         );
       } else {
