@@ -374,5 +374,31 @@
             "ÖDENEN TOPLAM": 0.0,
             "AÇIK FATURA TOPLAMI": 62000.0,
             "VADE (GÜN)": 6
-        }  
+        },
+        {
+            "FATURA TARİHİ": "06.05.2024",
+            "VADE TARİHİ": "28.08.2024",
+            "FATURA TÜRÜ": "ALINAN HİZMET FATURASI",
+            "FİŞ NO": "ESS20234252342",
+            "FATURA NO": "ESS202423523423",
+            "CARİ": "EST ENDÜSTRİ TEKNİK.",
+            "ÖDEME PLANI": "90DNET",
+            "FATURA TOPLAMI": 30000.0,
+            "ÖDENEN TOPLAM": 0.0,
+            "AÇIK FATURA TOPLAMI": 30000.0,
+            "VADE (GÜN)": 6
+        },
+        {
+            "FATURA TARİHİ": "06.05.2024",
+            "VADE TARİHİ": "28.09.2024",
+            "FATURA TÜRÜ": "ALINAN HİZMET FATURASI",
+            "FİŞ NO": "ESS20234252342",
+            "FATURA NO": "ESS202423523423",
+            "CARİ": "EST ENDÜSTRİ TEKNİK.",
+            "ÖDEME PLANI": "90DNET",
+            "FATURA TOPLAMI": 50000.0,
+            "ÖDENEN TOPLAM": 0.0,
+            "AÇIK FATURA TOPLAMI": 50000.0,
+            "VADE (GÜN)": 6
+        }
     ]

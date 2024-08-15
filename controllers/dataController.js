@@ -18,7 +18,7 @@ function calculateDaysDue(dueDate) {
     return null;
   }
 
-  const diffTime = due - currentDate; // Tarihler arası fark
+  const diffTime = currentDate - due; // Tarihler arası fark
   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); // Farkı gün'e çevirme (milisaniye)
   return diffDays;
 }
