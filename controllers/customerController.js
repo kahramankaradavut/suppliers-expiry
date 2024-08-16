@@ -2,7 +2,7 @@ const pool = require('../config/db');
 
 async function updateCustomerData() {
   try {
-    // invoices tablosundaki verileri topluyoruz
+    // invoices tablosundaki verileri topla
     const customersData = await pool.query(`
       SELECT customer_name,
              SUM(invoice_total) as total_debt,
@@ -18,7 +18,7 @@ async function updateCustomerData() {
       GROUP BY customer_name
     `);
 
-    // Verileri customers tablosuna ekliyoruz veya güncelliyoruz
+    // Verileri customers tablosuna ekle/güncelle
     for (let customer of customersData.rows) {
       await pool.query(
         `INSERT INTO customers (name, total_debt, total_paid, outstanding_total, due_0_6, due_7_30, due_31_60, due_61_90, due_91_120, due_120_plus)
